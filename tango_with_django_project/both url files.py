@@ -1,3 +1,4 @@
+###URL TWDP###
 """
 tango_with_django_project URL Configuration
 
@@ -14,6 +15,30 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+# url code for urls.py in rango app
+"""
+from django.conf.urls import url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+]
+"""
+# url code 2 for urls.py in rango app?
+"""
+from django.conf.urls import url
+from rango import views
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    #new
+    url(r'^$', views.about, name='about'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+"""
+# url code from chapter 4
 
 from django.conf.urls import url
 from django.contrib import admin
@@ -31,3 +56,16 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+###URL RANGO###
+
+from django.conf.urls import url
+from rango import views
+
+
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    #new
+    url(r'^$', views.about, name='about'),
+]
