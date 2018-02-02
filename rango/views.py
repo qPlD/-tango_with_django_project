@@ -10,11 +10,13 @@ def index(request):
     # that will be passed to the template engine.
     
     category_list = Category.objects.order_by('-likes')[:5]
-    context_dict = {'categories': category_list}
+    context_dict = {'boldmessage': "Crunchy, creamy, cookie, candy, cupcake!"}
     
     # Render the response and send it back!
-    return render(request, 'rango/index.html', context_dict)
+    return render(request, 'rango/index.html', context=context_dict)
 
 #new 
 def about(request):
-    return HttpResponse("Rango says here is the about page!")
+    context_dict = {'boldmessage': "This tutorial has been brought to you by Quentin"}
+    return render(request, 'rango/about.html', context=context_dict)
+    #return HttpResponse("Rango says here is the about page!")
