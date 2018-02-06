@@ -27,3 +27,5 @@ class Page(models.Model):
 
     def __str__(self):  # For Python 2, use __unicode__ too
         return self.title
+
+
