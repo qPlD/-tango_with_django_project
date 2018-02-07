@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
-from rango.forms import CategoryForm
-from rango.forms import PageForm
+from rango.forms import CategoryForm, PageForm
 
 def index(request):
     # Query the database for a list of ALL categories currently stored.
@@ -20,11 +19,13 @@ def index(request):
     # Render the response and send it back!
     return render(request, 'rango/index.html', context_dict)
 
-#new 
+
 def about(request):
-    context_dict = {'boldmessage': "This tutorial has been brought to you by Quentin"}
-    return render(request, 'rango/about.html', context=context_dict)
-    #return HttpResponse("Rango says here is the about page!")
+# prints out whether the method is a GET or a POST
+    print(request.method)
+# prints out the user name, if no one is logged in it prints `AnonymousUser`
+    print(request.user)
+    return render(request, 'rango/about.html', {})
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass 
